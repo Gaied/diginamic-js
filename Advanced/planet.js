@@ -1,25 +1,22 @@
-class Planet {
-    constructor(name, population) {
-      this.name = name;
-      this.population = population;
-    }
+class Planet { 
 
-      get name() {
-        return this.nom;
-      }
-
-      get population() {
-        return this.popul;
-      }
-
-    static countPlanetPopulation(p) {
-
-        p.reduce((i, p)=>{
-            return i + p;
-          });
-        
-      }
-      
+	constructor( { name, population } ) {
+		this.nom = name;
+		this.pop = population;
   }
-
-  module.exports = Planet;
+	get name() {
+		return this.nom;
+  }
+	get population() {
+		return this.pop;
+  }
+  
+	static countPlanetsPopulation( planets ) {
+		return planets.reduce(
+			(i,p) => {
+				let n = parseInt(p.population);
+				return i + (n?n:1);
+			},1);
+	}
+}
+module.exports = Planet;
